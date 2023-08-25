@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New</title>
+</head>
+<body>
+
+<a th:href="@{/logout}">Logout</a>
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+  <label > Enter name: </label>
+  <label>
+    <input th:field="*{name}" type="text">
+  </label>
+  <br/>
+  <label for="password"> Enter password: </label>
+  <input type="password" th:field="*{password}" id="password"/>
+  <br/>
+  <div>
+    <label for="roleIds">Roles:</label>
+    <select id="roleIds" name="roleIds" multiple>
+      <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+    </select>
+  </div>
+  <input type="submit" value="Create"/>
+</form>
+
+
+</body>
+</html>
